@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('whitelist', function (Blueprint $table) {
+        Schema::create('whitelists', function (Blueprint $table) {
             $table->id();
             $table->string('phone')->unique();
             $table->string('customer_name');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whitelist');
+        Schema::dropIfExists('whitelists');
     }
 };

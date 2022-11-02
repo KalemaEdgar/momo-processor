@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blacklist', function (Blueprint $table) {
+        Schema::create('blacklists', function (Blueprint $table) {
             $table->id();
             $table->string('phone')->unique();
             $table->string('customer_name');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blacklist');
+        Schema::dropIfExists('blacklists');
     }
 };

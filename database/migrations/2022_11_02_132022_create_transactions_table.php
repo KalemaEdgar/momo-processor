@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('reference');
             $table->string('client_id');
             $table->string('debit_account');
             $table->string('credit_account');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('amount');
             $table->string('status')->nullable();
             $table->string('reason')->nullable();
+            $table->string('client_ip')->nullable();
             $table->smallInteger('retries')->default(0);
             // Reversal needed incase the transaction maxes out the retries and is still failing
             $table->boolean('reversal_required')->default(false);

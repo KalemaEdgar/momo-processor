@@ -23,6 +23,7 @@ class TransactionFactory extends Factory
         $data = fake()->randomElement($clients);
         //$accounts = User::where('blocked', 'false')->where('account_id', '<>', $data->account_id)->pluck('account_id')->toArray();
         return [
+            'reference' => 'ref' . fake()->randomNumber(6, true),
             'client_id' => $data->client_id,
             'debit_account' => $data->ova,
             'credit_account' => fake()->randomElement(['0775623646','0701356712','0781126013','0752003900','0772356712','0750117542','0701099098','0774843714']),
@@ -31,6 +32,7 @@ class TransactionFactory extends Factory
             'created_by' => 'app',
             'status' => 'SUCCESS',
             'reason' => 'Transaction processed successfully',
+            'client_ip' => '172.217.22.14',
         ];
     }
 }

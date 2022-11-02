@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('payments')->group(function () {
     Route::post('/mtn', [TransactionController::class, 'mtn']);
     Route::post('/airtel', [TransactionController::class, 'airtel']);
+
     Route::get('/', [TransactionController::class, 'index']); // view all transactions
     Route::get('/ova/{ova_account}', [TransactionController::class, 'showOvaTransactions']);
     Route::get('/wallet/{account_number}', [TransactionController::class, 'showWalletTransactions']);

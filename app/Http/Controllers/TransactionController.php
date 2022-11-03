@@ -47,8 +47,8 @@ class TransactionController extends Controller
             if (empty($clientId) || empty($clientSecret))
             {
                 $response = [
-                    'status' => 'fail',
-                    'error' => 'Invalid client credentials',
+                    'status' => 'Failed',
+                    'message' => 'Invalid client credentials',
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -61,8 +61,8 @@ class TransactionController extends Controller
             if ( ! Auth::attempt(['client_id' => $clientId, 'password' => $clientSecret, 'blocked' => false]))
             {
                 $response = [
-                    'status' => 'fail',
-                    'error' => 'Invalid client credentials',
+                    'status' => 'Failed',
+                    'message' => 'Invalid client credentials',
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -81,8 +81,8 @@ class TransactionController extends Controller
 
             if ($validator->fails()) {
                 $response = [
-                    'status' => 'fail',
-                    'error' => $validator->errors()->first(),
+                    'status' => 'Failed',
+                    'message' => $validator->errors()->first(),
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -185,7 +185,7 @@ class TransactionController extends Controller
             return response($response, 200);
 
         } catch (Exception $ex) {
-            $response['status'] = 'fail';
+            $response['status'] = 'Failed';
             $response['message'] = 'Request failed. Please try again in a minute or contact support';
             $response['responded_at'] = now()->format('c');
 
@@ -221,8 +221,8 @@ class TransactionController extends Controller
             if (empty($clientId) || empty($clientSecret))
             {
                 $response = [
-                    'status' => 'fail',
-                    'error' => 'Invalid client credentials',
+                    'status' => 'Failed',
+                    'message' => 'Invalid client credentials',
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -235,8 +235,8 @@ class TransactionController extends Controller
             if ( ! Auth::attempt(['client_id' => $clientId, 'password' => $clientSecret, 'blocked' => false]))
             {
                 $response = [
-                    'status' => 'fail',
-                    'error' => 'Invalid client credentials',
+                    'status' => 'Failed',
+                    'message' => 'Invalid client credentials',
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -255,8 +255,8 @@ class TransactionController extends Controller
 
             if ($validator->fails()) {
                 $response = [
-                    'status' => 'fail',
-                    'error' => $validator->errors()->first(),
+                    'status' => 'Failed',
+                    'message' => $validator->errors()->first(),
                     'responded_at' => now()->format('c'),
                 ];
 
@@ -359,7 +359,7 @@ class TransactionController extends Controller
             return response($response, 200);
 
         } catch (Exception $ex) {
-            $response['status'] = 'fail';
+            $response['status'] = 'Failed';
             $response['message'] = 'Request failed. Please try again in a minute or contact support';
             $response['responded_at'] = now()->format('c');
 

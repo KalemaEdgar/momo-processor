@@ -15,12 +15,25 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('client_name')->unique();
+            $table->string('description');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('client_id')->unique();
+            $table->string('ova')->unique();
             $table->string('password');
-            $table->rememberToken();
+            $table->string('phone')->nullable(); // Contact person incase we get issues from the provider
+
+            $table->string('created_by');
+
+            $table->boolean('approved')->default(false);
+            $table->string('approved_by')->nullable();
+            $table->timestamp('approved_at')->nullable();
+
+            $table->boolean('blocked')->default(false);
+            $table->string('blocked_by')->nullable();
+            $table->timestamp('blocked_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
